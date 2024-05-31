@@ -1,0 +1,98 @@
+
+# Install the pymongo Python Package
+import pymongo 
+from pymongo import MongoClient
+from pprint import pprint
+import requests 
+
+	
+# Client connects to "localhost" by default 
+client = MongoClient()
+
+# Create local "bipm" database on the fly 
+db = client['bipm']
+
+# When we rerun the whole notebook, we start from scratch 
+# by dropping the colection "courses"
+db.courses.drop()
+
+# Create a Python Dictonary
+courses = [
+    {'title': 'Data Science',
+     'lecturer': {
+         'name': 'Markus Löcher',
+         'department': 'Math',
+         'status': 'Professor'
+     },
+     'semester': 1},
+    {'title': 'Data Warehousing',
+     'lecturer': {
+         'name': 'Roland M. Mueller',
+         'department': 'Information Systems',
+         'status': 'Professor'
+     },
+     'semester': 1},
+    {'title': 'Business Process Management',
+     'lecturer': {
+         'name': 'Frank Habermann',
+         'department': 'Information Systems',
+         'status': 'Professor'
+     },
+     'semester': 1},
+    {'title': 'Stratigic Issues of IT',
+     'lecturer': {
+         'name': 'Sven Pohland',
+         'department': 'Information Systems',
+         'status': 'Professor'
+     },
+     'semester': 1},
+    {'title': 'Text, Web and Social Media Analytics Lab',
+     'lecturer': {
+         'name': 'Markus Löcher',
+         'department': 'Math',
+         'status': 'Professor'
+     },
+     'semester': 2},
+    {'title': 'Enterprise Architectures for Big Data',
+     'lecturer': {
+         'name': 'Roland M. Mueller',
+         'department': 'Information Systems',
+         'status': 'Professor'
+     },
+     'semester': 2},
+    {'title': 'Business Process Integration Lab',
+     'lecturer': {
+         'name': 'Frank Habermann',
+         'department': 'Information Systems',
+         'status': 'Professor'
+     },
+     'semester': 2},
+    {'title': 'IT-Security and Privacy',
+     'lecturer': {
+         'name': 'Dennis Uckel',
+         'department': 'Information Systems',
+         'status': 'External'
+     },
+     'semester': 2},
+    {'title': 'Research Methods',
+     'lecturer': {
+         'name': 'Marcus Birkenkrahe',
+         'department': 'Information Systems',
+         'status': 'Professor'
+     },
+     'semester': 2},
+]
+
+pprint(courses)
+
+db.courses.insert_many(courses)
+
+# TODO: Print all courses
+
+my_json = '{"title": "Master Thesis", "semester": 3}'
+another_course = json.loads(my_json)
+another_course
+
+# TODO: Store `another_course` as another course:
+
+# TODO: Print all courses
